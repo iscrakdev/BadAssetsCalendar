@@ -7,6 +7,7 @@ import MonthNameDisplay from "./MonthNameDisplay.jsx";
 const CalendarMonth = ({ month }) => {
   return (
     <div className="month-calendar-container">
+      <div className = "lefthand-customizer">customizer</div>
       <div className="calendar-table">
         <MonthNameDisplay />
         <table>

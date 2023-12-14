@@ -2,33 +2,48 @@
   text-align: center;
 }
 .material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
- /* navigation */
- .navigation-links{
+/* navigation */
+.navigation-links {
   display: inline;
   margin-right: 40px;
- }
- .navigation-container{
+}
+.navigation-container {
   margin-bottom: 25px;
- }
+}
 
- /* Calendar Month View */
- .month-calendar-container{
+/* Calendar Month View */
+.lefthand-customizer {
+  width: 20%;
+  margin-left: 0;
+  margin-right: 0;
+  display: inline-block;
+}
+.calendar-table {
   width: 80%;
-  margin-left: auto;
- }
- .previous-month, .next-month, .month-title{
+  margin-left: 0;
+  display: inline-block;
+}
+.calendar-table table {
+  margin-left: 10%;
+}
+.previous-month,
+.next-month,
+.month-title {
   display: inline;
- }
- .calendar-table td, th{
-  width: 90px;
- }
- .month-title{
-
- }
+}
+.month-title{
+  margin-left: 60px;
+  margin-right: 60px;
+}
+.previous-month, .next-month{
+  background-color: white;
+  border: 1px solid lightgrey;
+  font-size: 12pt;
+}
+.calendar-table td,
+th {
+  width: 95px;
+}
