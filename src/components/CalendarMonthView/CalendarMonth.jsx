@@ -9,7 +9,9 @@ const CalendarMonth = ({ month }) => {
     <div className="month-calendar-container">
       <div className = "lefthand-customizer">customizer</div>
       <div className="calendar-table">
+        <div className = "cal-monthname">
         <MonthNameDisplay />
+        </div>
         <table>
           <thead>
             <CalendarMonthHeader />

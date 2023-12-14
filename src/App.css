@@ -25,9 +25,11 @@
   width: 80%;
   margin-left: 0;
   display: inline-block;
+  background-color: whitesmoke;
 }
 .calendar-table table {
-  margin-left: 10%;
+  margin: auto;
+  background-color: white;
 }
 .previous-month,
 .next-month,
