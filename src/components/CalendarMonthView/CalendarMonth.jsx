@@ -1,0 +1,27 @@
+import React from "react";
+import CalendarWeek from "./CalendarWeek.jsx";
+import CalendarMonthHeader from "./CalendarMonthHeader.jsx";
+import MonthNameDisplay from "./MonthNameDisplay.jsx";
+
+
+const CalendarMonth = ({ month }) => {
+  return (
+    <div className="month-calendar-container">
+      <div className="calendar-table">
+        <MonthNameDisplay />
+        <table>
+          <thead>
+            <CalendarMonthHeader />
+          </thead>
+          <tbody>
+            {month.map((week) => {
+              return <CalendarWeek key={week} week={week} />;
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
+
+export default CalendarMonth;
