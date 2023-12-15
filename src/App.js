@@ -10,10 +10,17 @@ import { useState, useEffect, useReducer } from "react";
 function customEventReducer(state, action) {
   switch (action.type) {
     case "LOAD_EVENTS": {
-      return;
+      return JSON.parse(localStorage.getItem("customEvents"));
     }
     case "CREATE_EVENT": {
-      return;
+      // take an event object and add it to loact storage
+      // declare a variable with a value of the new event
+      const newEvent = action.payload;
+      // update locate storage to include the new event
+      const updatedState = [...state, newEvent];
+      // return the updated array of events
+      localStorage.setItem("customEvents", JSON.stringify(updatedState));
+      return updatedState;
     }
     case "EDIT_EVENT": {
       return;
@@ -47,6 +54,10 @@ function App() {
         setHolidays(data);
         localStorage.setItem("2023Holidays", JSON.stringify(data));
       });
+    }
+
+    if (localStorage.getItem("customEvents") !== null) {
+      dispatchCustomEvents({ type: "LOAD_EVENTS" });
     }
   }, []);
 
