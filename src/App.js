@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
 function App() {
   const [holidays, setHolidays] = useState([]);
   const yearArr = getCalendar(2023);
-  const curMonth = new Date().getMonth();
+  const month = new Date().getMonth();
 
   useEffect(() => {
     // Checks if we have Holidays in local storage
@@ -33,7 +33,7 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<CalendarMonth month={yearArr[month]} />}
+            element={<CalendarMonth month={yearArr[month]} holidays={holidays} />}
           />
           <Route path="/events" element={<EventPage />} />
         </Routes>
