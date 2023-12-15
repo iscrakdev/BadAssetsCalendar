@@ -2,15 +2,26 @@ import "./App.css";
 import Navigation from "./components/Navigation";
 import CalendarMonth from "./components/CalendarMonthView/CalendarMonth.jsx";
 import getCalendar from "./util/getCalendar.js";
+import EventPage from "./components/EventsPage/EventPage.jsx";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 function App() {
   const yearArr = getCalendar(2023)
   const curMonth = new Date().getMonth()
   return (
-    <div className="App">
-      <Navigation navigation={Navigation}></Navigation>
-      <CalendarMonth month={yearArr[curMonth]}/>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Navigation Navigation={Navigation}></Navigation>
+        <Routes>
+          <Route
+            path="/"
+            element={<CalendarMonth month={yearArr[month]} />}
+          />
+          <Route path="/events" element={<EventPage />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
