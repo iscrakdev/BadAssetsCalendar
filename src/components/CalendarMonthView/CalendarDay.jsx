@@ -17,7 +17,7 @@ const CalendarDay = ({ day, holidays }) => {
         <div className = "day-td">
           <div className="days-events">
             {holidaysArr.map((event) => (
-              <p className="holiday">
+              <p className="holiday event">
                 {event.name === "Christmas Eve observed"
                   ? "Christmas Day"
                   : event.name}

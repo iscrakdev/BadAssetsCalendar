@@ -72,18 +72,20 @@ body{
 th {
   max-width: 50px;
   word-wrap: normal;
-  height: 70px;
+  height: 80px;
   padding: 4px 4px 0px 4px;
+  border: 1px solid rgb(0,0,0,0);
 }
 .calendar-table th{
   font-family: serif;
   padding-top: 5px;
 }
 .calendar-table td:hover{
-background-color: #eaf4f4;
+  background-color: #eaf4f4;
+  border: 1px solid #a4c3b2;
 }
 .calendar-table td p {
-  margin: auto;
+
 }
 .calendar-top-bar{
   width: 90%;
@@ -102,8 +104,9 @@ background-color: #eaf4f4;
   color: grey;
   font-size: 11pt;
   position:absolute;
-  bottom: 0;
+  padding-right: 3px;
   right: 0;
+  padding-bottom: 0px;
 }
 .days-events, .day-td{
   margin-top: 0;
@@ -142,8 +145,7 @@ background-color: #eaf4f4;
 
 
 /* Event/Holiday card coloring */
-.holiday{
-  background-color: #a4c3b2;
+.event{
   font-size: 10pt;
   text-align: left;
   padding: 2px;
@@ -151,10 +153,24 @@ background-color: #eaf4f4;
   height: 18px;
   overflow: hidden;
   padding-left: 5px;
+  margin: 4px 4px 0px 4px;
 }
-.holiday:hover{
+.event:hover{
   height: fit-content;
 }
-.event{
+.holiday{
+  background-color: #a4c3b2;
+}
+.holiday:hover{
+  background-color: #c2e0d0;
+}
+.custom-event{
   background-color: rgb(179, 215, 229);
+}
+.today{
+  background-color: whitesmoke;
+}
+
+table td .calendar-day{
+  padding-bottom: 0px;
 }
