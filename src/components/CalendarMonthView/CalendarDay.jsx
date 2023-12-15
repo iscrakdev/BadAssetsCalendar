@@ -15,10 +15,13 @@ const CalendarDay = ({ day, holidays }) => {
         <p>X</p>
       ) : (
         <p>
-          {day}<br/>
+          {day}
+          <br />
           {holidaysArr.map((event) => (
             <span>
-              {event.name}
+              {event.name === "Christmas Eve observed"
+                ? "Christmas Day"
+                : event.name}
             </span>
           ))}
         </p>
