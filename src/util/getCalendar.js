@@ -35,7 +35,10 @@ function getCalendar(year) {
     31,
   ];
 
-  return months.map((daysInMonth) => {
+  return months.map((daysInMonth, idx) => {
+    const month = {
+      monthIdx: idx,
+    }
     const monthArr = [];
     let curDay = 1;
     while (curDay <= daysInMonth) {
@@ -60,8 +63,8 @@ function getCalendar(year) {
 
       monthArr.push(weekArr);
     }
-
-    return monthArr;
+    month['monthArr'] = monthArr
+    return month;
   });
 }
 

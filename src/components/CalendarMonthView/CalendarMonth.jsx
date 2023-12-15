@@ -4,7 +4,7 @@ import CalendarMonthHeader from "./CalendarMonthHeader.jsx";
 import MonthNameDisplay from "./MonthNameDisplay.jsx";
 
 
-const CalendarMonth = ({ month }) => {
+const CalendarMonth = ({ month, holidays }) => {
   return (
     <div className="month-calendar-container">
       <div className = "lefthand-customizer">customizer</div>
@@ -17,7 +17,7 @@ const CalendarMonth = ({ month }) => {
             <CalendarMonthHeader />
           </thead>
           <tbody>
-            {month.map((week) => {
+            {month.monthArr.map((week) => {
               return <CalendarWeek key={week} week={week} />;
             })}
           </tbody>
