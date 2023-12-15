@@ -1,10 +1,25 @@
+const prependNullDays = (offset) => {
+  const week = [];
+
+  for (let offsetDays = 0; offsetDays < offset; offsetDays++) {
+    week.push(null);
+  }
+
+  return week;
+};
+
+const appendNullDays = (weekArr) => {
+  while (weekArr.length < 7) {
+    weekArr.push(null);
+  }
+
+  return weekArr;
+};
+
 function getCalendar(year) {
-  // get first day of the year to index our year
-  const currentDayIndex = new Date(year, 0, 1).getDay().toString();
-
-  // year contains 12 months that contains
-  const yearArr = [];
-
+  let offset = new Date(year, 0, 1).getDay();
+  console.log(offset)
+  // February has a conditional check for 29 days on leap year
   const months = [
     31,
     year % 4 === 0 ? 29 : 28,
@@ -20,52 +35,34 @@ function getCalendar(year) {
     31,
   ];
 
-  let offset = currentDayIndex;
-
-  for (let month of months) {
-    // create a month array to hold weeks
-    let monthArr = [];
-    // gets amount of weeks in a month
-    let weeksInMonth = Math.ceil(month / 7);
-    // current day of the month
+  return months.map((daysInMonth) => {
+    const monthArr = [];
     let curDay = 1;
+    while (curDay <= daysInMonth) {
+      let weekArr = [];
 
-    // iterates through every week
-    for (let curWeek = 0; curWeek < weeksInMonth + 1; curWeek++) {
-      if (curDay > month) {
-        break;
-      }
-      let week = [];
-
-      if (curWeek === 0) {
-        let offsetDays = 0;
-        while (offsetDays < offset) {
-          week.push(null);
-          offsetDays++;
-        }
+      // Adds the blank days from the last month
+      if (curDay === 1 && offset !== 7) {
+        weekArr = prependNullDays(offset);
       }
 
-      // create a week
-      for (let dayOfWeek = week.length; dayOfWeek < 7; dayOfWeek++) {
-        if (curDay <= month) {
-          week.push(curDay);
-          curDay++;
-          offset = 0;
-        } else {
-          offset = week.length;
-          while (week.length < 7) {
-            week.push(null);
-          }
+      // Ensures each week only has 7 days
+      for (let dayOfWeek = weekArr.length; dayOfWeek < 7; dayOfWeek++) {
+        weekArr.push(curDay++);
+        // Checks if the loop will run again and if it WONT, sets up the next month
+        if (curDay > daysInMonth) {
+          offset = weekArr.length;
+          // appends blank days to the end of current month
+          weekArr = appendNullDays(weekArr);
           break;
         }
       }
 
-      monthArr.push(week);
+      monthArr.push(weekArr);
     }
 
-    yearArr.push(monthArr);
-  }
-  return yearArr;
+    return monthArr;
+  });
 }
 
 export default getCalendar;
