@@ -2,9 +2,11 @@ import "./App.css";
 import Navigation from "./components/Navigation";
 import CalendarMonth from "./components/CalendarMonthView/CalendarMonth.jsx";
 import getCalendar from "./util/getCalendar.js";
+import getHolidaysByYear from "./util/getHolidaysFromAPI.js";
 
 function App() {
   const yearArr = getCalendar(2023)
+  const holidays = getHolidaysByYear(2023)
   const curMonth = new Date().getMonth()
   return (
     <div className="App">
