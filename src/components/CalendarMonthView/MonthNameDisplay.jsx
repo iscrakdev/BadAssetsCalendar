@@ -18,11 +18,11 @@ const MonthNameDisplay = () => {
 
     return(
         <div className="month-selector">
-          <button className="previous-month material-symbols-outlined">
+          <button className="previous-month material-symbols-outlined" onClick={prevMonth()}>
             navigate_before
           </button>
           <h3 className="month-title">{displayMonth}</h3>
-          <button className="next-month material-symbols-outlined">
+          <button className="next-month material-symbols-outlined" onClick={nextMonth()}>
             navigate_next
           </button>
         </div>
