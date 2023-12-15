@@ -10,21 +10,22 @@ const CalendarDay = ({ day, holidays }) => {
   const holidaysArr = getFilteredEvents(holidays, day);
 
   return (
-    <td className = "calendar-day-container">
+    <td className="calendar-day-container">
       {day === null ? (
         <p></p>
       ) : (
-        <div>
-        {holidaysArr.map((event) => (
-          <p className = "holiday">
-            {event.name === "Christmas Eve observed"
-              ? "Christmas Day"
-              : event.name}
-          </p>
-        ))}
-        <br/>
-        <p className = "calendar-day">{day}</p>
-      </div>
+        <div className = "day-td">
+          <div className="days-events">
+            {holidaysArr.map((event) => (
+              <p className="holiday">
+                {event.name === "Christmas Eve observed"
+                  ? "Christmas Day"
+                  : event.name}
+              </p>
+            ))}
+          </div>
+          <p className="calendar-day">{day}</p>
+        </div>
       )}
     </td>
   );
