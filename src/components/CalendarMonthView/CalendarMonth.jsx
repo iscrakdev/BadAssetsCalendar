@@ -30,7 +30,7 @@ const CalendarMonth = ({ month, holidays }) => {
                 <CalendarWeek
                   key={week}
                   week={week}
-                  filteredHolidays={filteredHolidays}
+                  holidays={filteredHolidays}
                 />
               );
             })}
