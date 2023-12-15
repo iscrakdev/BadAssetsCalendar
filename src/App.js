@@ -5,9 +5,33 @@ import getCalendar from "./util/getCalendar.js";
 import getHolidaysByYear from "./util/getHolidaysFromAPI.js";
 import EventPage from "./components/EventsPage/EventPage.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useReducer } from "react";
+
+function customEventReducer(state, action) {
+  switch (action.type) {
+    case "LOAD_EVENTS": {
+      return;
+    }
+    case "CREATE_EVENT": {
+      return;
+    }
+    case "EDIT_EVENT": {
+      return;
+    }
+    case "DELETE_EVENT": {
+      return;
+    }
+    default: {
+      return state;
+    }
+  }
+}
 
 function App() {
+  const [customEvents, dispatchCustomEvents] = useReducer(
+    customEventReducer,
+    []
+  );
   const [holidays, setHolidays] = useState([]);
   const yearArr = getCalendar(2023);
   const month = new Date().getMonth();
@@ -33,7 +57,9 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<CalendarMonth month={yearArr[month]} holidays={holidays} />}
+            element={
+              <CalendarMonth month={yearArr[month]} holidays={holidays} />
+            }
           />
           <Route path="/events" element={<EventPage />} />
         </Routes>
