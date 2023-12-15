@@ -3,22 +3,36 @@ import CalendarWeek from "./CalendarWeek.jsx";
 import CalendarMonthHeader from "./CalendarMonthHeader.jsx";
 import MonthNameDisplay from "./MonthNameDisplay.jsx";
 
+const CalendarMonth = ({ month, holidays }) => {
+  // monthNum will be 1-12 (1 = Jan, 12 = Dec)
+  const getFilteredEvents = (arrOfEvents, monthNum) => {
+    return arrOfEvents.filter((event) =>
+      Number(event.date.split("-")[1]) === monthNum ? true : false
+    );
+  };
 
-const CalendarMonth = ({ month }) => {
+  const filteredHolidays = getFilteredEvents(holidays, month.monthIdx + 1);
+
   return (
     <div className="month-calendar-container">
-      <div className = "lefthand-customizer">customizer</div>
+      <div className="lefthand-customizer">customizer</div>
       <div className="calendar-table">
-        <div className = "calendar-top-bar">
-        <MonthNameDisplay />
+        <div className="calendar-top-bar">
+          <MonthNameDisplay />
         </div>
         <table>
           <thead>
             <CalendarMonthHeader />
           </thead>
           <tbody>
-            {month.map((week) => {
-              return <CalendarWeek key={week} week={week} />;
+            {month.monthArr.map((week) => {
+              return (
+                <CalendarWeek
+                  key={week}
+                  week={week}
+                  holidays={filteredHolidays}
+                />
+              );
             })}
           </tbody>
         </table>
