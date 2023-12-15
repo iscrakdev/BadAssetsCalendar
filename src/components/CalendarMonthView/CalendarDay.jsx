@@ -12,19 +12,19 @@ const CalendarDay = ({ day, holidays }) => {
   return (
     <td>
       {day === null ? (
-        <p>X</p>
+        <p></p>
       ) : (
         <p>
-          {day}
-          <br />
-          {holidaysArr.map((event) => (
-            <span>
-              {event.name === "Christmas Eve observed"
-                ? "Christmas Day"
-                : event.name}
-            </span>
-          ))}
-        </p>
+        {day}
+        <br />
+        {holidaysArr.map((event) => (
+          <span>
+            {event.name === "Christmas Eve observed"
+              ? "Christmas Day"
+              : event.name}
+          </span>
+        ))}
+      </p>
       )}
     </td>
   );
