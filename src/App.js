@@ -6,7 +6,6 @@ import getCalendar from "./util/getCalendar.js";
 function App() {
   const yearArr = getCalendar(2023)
   const curMonth = new Date().getMonth()
-  console.log(yearArr)
   return (
     <div className="App">
       <Navigation navigation={Navigation}></Navigation>
