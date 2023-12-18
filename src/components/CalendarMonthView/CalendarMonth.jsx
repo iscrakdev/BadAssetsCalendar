@@ -7,7 +7,7 @@ const CalendarMonth = ({ month, holidays, yearArr, customEvents }) => {
   // monthNum will be 1-12 (1 = Jan, 12 = Dec)
   const getFilteredEvents = (arrOfEvents, monthNum) => {
     return arrOfEvents.filter((event) =>
-      Number(event.date.split("-")[1]) === monthNum ? true : false
+      Number(event.date.split("-")[1]) === parseInt(monthNum) ? true : false
     );
   };
 
