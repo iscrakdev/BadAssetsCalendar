@@ -4,6 +4,7 @@ import CalendarMonth from "./components/CalendarMonthView/CalendarMonth.jsx";
 import getCalendar from "./util/getCalendar.js";
 import getHolidaysByYear from "./util/getHolidaysFromAPI.js";
 import EventPage from "./components/EventsPage/EventPage.jsx";
+import DayCalendar from "./components/CalendarDayView/DayCalendar.jsx"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect, useReducer } from "react";
 
@@ -78,6 +79,8 @@ function App() {
             element={<CalendarMonth month={yearArr[month]} holidays={holidays} customEvents={customEvents} />}
           />
           <Route path="/events" element={<EventPage />} />
+          <Route path="/:month/:day" element={<DayCalendar holidays={holidays}/>}
+          />
         </Routes>
       </div>
     </BrowserRouter>
