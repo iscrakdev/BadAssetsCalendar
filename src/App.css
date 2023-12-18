@@ -29,10 +29,19 @@ body{
   margin-left: 0;
   margin-right: 0;
   display: inline-block;
+  height: 100%;
+  position: fixed;
+  left: 0;
+}
+.lefthand-customizer h3{
+  margin: 0;
+}
+.lefthand-customizer input{
+  
 }
 .calendar-table {
   width: 80%;
-  margin-left: 0;
+  margin-left: 20%;
   display: inline-block;
   background-color: whitesmoke;
   border-radius: 8px;
@@ -72,13 +81,15 @@ body{
 th {
   max-width: 50px;
   word-wrap: normal;
-  height: 80px;
+  height: 85px;
   padding: 4px 4px 0px 4px;
   border: 1px solid rgb(0,0,0,0);
 }
 .calendar-table th{
   font-family: serif;
-  padding-top: 5px;
+  padding-top: 10px;
+  height: fit-content;
+  padding-bottom: 5px;
 }
 .calendar-table td:hover{
   background-color: #eaf4f4;
@@ -119,15 +130,27 @@ th {
 }
 
 /* Event Page */
+.event-row-1{
+  position: relative;
+  margin-top: 10px
+}
+.event-item{
+  background-color: whitesmoke;
+  width: 60%;
+  margin-left: 20%;
+  margin-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: left;
+}
+.row1-item{
+  padding: 5%;
+}
 .event-inline-obj{
   display: inline;
 }
-.new-event-container{
-  position: absolute;
-  margin-bottom: 20px;
-  bottom: 0;
-  margin-right: 20px;
-  right: 0;
+.create-event-title{
+  width: 20%;
 }
 .new-event-button{
   background-color: #a4c3b2;
@@ -142,7 +165,25 @@ th {
   border-radius: 5px;
   font-size: 14pt;
 }
-
+.delete-button{
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0;
+  margin-right: 15px;
+  transform: translate(0, -15px);
+}
+.event-row-2{
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.event-item .event-description{
+  font-size: 10pt;
+  text-align: left;
+}
 
 /* Event/Holiday card coloring */
 .event{

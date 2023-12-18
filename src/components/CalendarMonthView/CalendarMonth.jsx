@@ -15,7 +15,16 @@ const CalendarMonth = ({ month, holidays }) => {
 
   return (
     <div className="month-calendar-container">
-      <div className="lefthand-customizer">customizer</div>
+      <div className="lefthand-customizer">
+        <div>
+          <h3>Filters</h3>
+          <input type="checkbox" name = "events-checkbox" defaultChecked></input>
+          <label for = "events-checkbox">Events</label><br/>
+          <input type = "checkbox" name = "holidays-checkbox" defaultChecked/>
+          <label for = "holidays-checkbox">Holidays</label>
+        </div>
+
+      </div>
       <div className="calendar-table">
         <div className="calendar-top-bar">
           <MonthNameDisplay />

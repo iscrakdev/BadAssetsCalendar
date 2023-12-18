@@ -1,6 +1,8 @@
+import CreateEvent from "./CreateEvent";
+import CalendarDay from "./../CalendarMonthView/CalendarDay";
 import EventList from "./EventList";
 
-const EventPage = () => {
+const EventPage = (holidaysArr) => {
 
     return (
         <div className = "events-page-container">
@@ -8,7 +10,7 @@ const EventPage = () => {
                 <EventList />
             </div>
             <div className = "new-event-container">
-                <button className = "new-event-button material-symbols-outlined">add_circle</button>
+                <CreateEvent/>
             </div>
         </div>
     )

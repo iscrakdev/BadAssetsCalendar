@@ -1,6 +1,6 @@
 import React from "react";
 
-const CalendarDay = ({ day, holidays, customEvents }) => {
+const CalendarDay = ({ day, holidays }) => {
   const getFilteredEvents = (arrOfEvents, dayNum) => {
     return arrOfEvents.filter((event) =>
       Number(event.date.split("-")[2]) === dayNum ? true : false
@@ -8,8 +8,6 @@ const CalendarDay = ({ day, holidays, customEvents }) => {
   };
 
   const holidaysArr = getFilteredEvents(holidays, day);
-  const customEventsArr = getFilteredEvents(customEvents, day)
-
 
   return (
     <td className="calendar-day-container">
@@ -25,11 +23,6 @@ const CalendarDay = ({ day, holidays, customEvents }) => {
                   : event.name}
               </p>
             ))}
-            <p className = "custom-events event">
-              {customEventsArr.map((event) => {
-                return( <span>{event.name}</span>)
-              })}
-            </p>
           </div>
           <p className="calendar-day">{day}</p>
         </div>
