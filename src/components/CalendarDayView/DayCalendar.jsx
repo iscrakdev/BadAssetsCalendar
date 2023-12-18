@@ -35,13 +35,13 @@ const DayCalendar = ({ holidays }) => {
                     <p>Next</p>
                 </div>
                 <div className = "day-schedule-container">
-                    {holidays.map((holiday)=> {
-                        return (
-                            <div className = "holiday-day-card">
-                                <h2>{holiday.name}</h2>
-                            </div>
-                        )
-                    })}
+                        <div className = "holiday-day-card">
+                            {holidaysArr.map((holiday)=> {
+                                return(
+                                    <h2>{holiday.name === "Christmas Eve observed" ? "Christmas Day" : holiday.name}</h2>
+                                )
+                            })}
+                        </div>
                 </div>
             </div>
         </div>
