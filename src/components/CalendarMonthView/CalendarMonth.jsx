@@ -3,11 +3,11 @@ import CalendarWeek from "./CalendarWeek.jsx";
 import CalendarMonthHeader from "./CalendarMonthHeader.jsx";
 import MonthNameDisplay from "./MonthNameDisplay.jsx";
 
-const CalendarMonth = ({ month, holidays,customEvents }) => {
+const CalendarMonth = ({ month, holidays, yearArr, customEvents }) => {
   // monthNum will be 1-12 (1 = Jan, 12 = Dec)
   const getFilteredEvents = (arrOfEvents, monthNum) => {
     return arrOfEvents.filter((event) =>
-      Number(event.date.split("-")[1]) === monthNum ? true : false
+      Number(event.date.split("-")[1]) === parseInt(monthNum) ? true : false
     );
   };
 
@@ -15,7 +15,16 @@ const CalendarMonth = ({ month, holidays,customEvents }) => {
 
   return (
     <div className="month-calendar-container">
-      <div className="lefthand-customizer">customizer</div>
+      <div className="lefthand-customizer">
+        <div>
+          <h3>Filters</h3>
+          <input type="checkbox" name = "events-checkbox" defaultChecked></input>
+          <label for = "events-checkbox">Events</label><br/>
+          <input type = "checkbox" name = "holidays-checkbox" defaultChecked/>
+          <label for = "holidays-checkbox">Holidays</label>
+        </div>
+
+      </div>
       <div className="calendar-table">
         <div className="calendar-top-bar">
           <MonthNameDisplay />
@@ -32,6 +41,8 @@ const CalendarMonth = ({ month, holidays,customEvents }) => {
                   week={week}
                   holidays={filteredHolidays}
                   customEvents={customEvents}
+                  month={month}
+                  yearArr={yearArr}
                 />
               );
             })}

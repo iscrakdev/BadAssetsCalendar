@@ -4,6 +4,7 @@ import CalendarMonth from "./components/CalendarMonthView/CalendarMonth.jsx";
 import getCalendar from "./util/getCalendar.js";
 import getHolidaysByYear from "./util/getHolidaysFromAPI.js";
 import EventPage from "./components/EventsPage/EventPage.jsx";
+import DayCalendar from "./components/CalendarDayView/DayCalendar.jsx"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect, useReducer } from "react";
 
@@ -51,11 +52,11 @@ function App() {
         localStorage.setItem("2023Holidays", JSON.stringify(data));
       });
     }
-
     if (localStorage.getItem("customEvents") !== null) {
       dispatchCustomEvents({ type: "LOAD_EVENTS" });
     }
 
+    /* const myCustomEventsArr = [];
     const eventObject = {
       date: "2023-12-24",
       time: null,
@@ -63,8 +64,9 @@ function App() {
       desc: "This is the day before Christmas Day",
     };
 
-    dispatchCustomEvents({ type: "CREATE_EVENT", payload: eventObject });
+    dispatchCustomEvents({ type: "CREATE_EVENT", payload: eventObject }); */
   }, []);
+  
 
   return (
     <BrowserRouter>
@@ -82,6 +84,8 @@ function App() {
             }
           />
           <Route path="/events" element={<EventPage />} />
+          <Route path="/:month/:day" element={<DayCalendar holidays={holidays}/>}
+          />
         </Routes>
       </div>
     </BrowserRouter>
