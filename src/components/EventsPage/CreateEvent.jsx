@@ -63,3 +63,13 @@ const CreateEvent = (myCustomEventsArr) => {
 };
 
 export default CreateEvent;
+
+
+// const eventObject = {
+//     date: "2023-12-24",
+//     time: null,
+//     name: "Christmas Eve",
+//     desc: "This is the day before Christmas Day",
+//   };
+
+//   dispatchCustomEvents({type: "CREATE_EVENT", payload: eventObject});

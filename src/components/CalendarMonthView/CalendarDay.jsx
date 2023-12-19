@@ -15,6 +15,7 @@ const CalendarDay = ({ holidays, customEvents, month, day }) => {
   }
   
 
+  console.log(customEvents)
   const holidaysArr = getFilteredEvents(holidays, day);
   const customEventsArr = getFilteredEvents(customEvents, day)
   console.log(holidaysArr); 

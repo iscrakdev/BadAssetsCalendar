@@ -32,7 +32,10 @@ function customEventReducer(state, action) {
 }
 
 function App() {
-  const [customEvents, dispatchCustomEvents] = useReducer(customEventReducer,[]);
+  const [customEvents, dispatchCustomEvents] = useReducer(
+    customEventReducer,
+    []
+  );
   const [holidays, setHolidays] = useState([]);
   const yearArr = getCalendar(2023);
   const month = new Date().getMonth();
@@ -72,7 +75,13 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<CalendarMonth month={yearArr[month]} holidays={holidays} customEvents={customEvents} />}
+            element={
+              <CalendarMonth
+                month={yearArr[month]}
+                holidays={holidays}
+                customEvents={customEvents}
+              />
+            }
           />
           <Route path="/events" element={<EventPage />} />
           <Route path="/:month/:day" element={<DayCalendar holidays={holidays}/>}
@@ -84,35 +93,3 @@ function App() {
 }
 
 export default App;
-
-/* 
-Play-Ground:
-
-let date = '2023-12-1'
-let [year, month, day] = date.split('-')
-(year is equal to '2023', month is equal to '12' and day is equal to '1')
-
-let day = {
-  day: "sunday",
-  date: "2023-12-1"
-}
-
-let week = [{day: 'Sunday', date: '2023-12-1'}, {day: 'Monday'}, {day: 'Tuesday'}, {day: 'Wednesday'}, {day: 'Thursday'}, {day: 'Friday'}, {day: 'Saturday'}]
-
-let month = [
-  week,
-  week,
-  week,
-  week,
-  week
-]
-
-29 30 31 tds []
-for (let i = 0; i <= 30; i++) {
-  tds.push(<td id={i} />)
-}
-
-let tableArr = [all tds]
-startOfMonth.getDay(); if index of array === td index, place at td index
-
-*/
