@@ -1,16 +1,14 @@
 import EventItem from "./EventItem";
-import CreateEvent from "./CreateEvent";
 
-
-const EventList = ({ events, holidaysArr }) => {
+const EventList = ({ events }) => {
 
 
     return (
         <div className = "event-list-page">
                 <div className = "event-list">
-                {holidaysArr.map((holiday) => {
+                {events.map((event) => {
                     return(
-                        <EventItem EventItem={EventItem} key={holiday.name}/>           
+                        <EventItem event={event}/>           
                     )
                 })}
                 </div>
