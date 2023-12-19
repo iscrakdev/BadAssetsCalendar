@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { NavigationContext } from "../../App";
 
 const MonthNameDisplay = () => {
-  const { month, setMonth, yearArr } = useContext(NavigationContext);
+  const { month, setMonth, year, setYear } = useContext(NavigationContext);
   let monthsArr = [
     "January",
     "February",
@@ -24,12 +24,20 @@ const MonthNameDisplay = () => {
     if (month !== 11) {
       setMonth(month + 1)
       setMonthName(monthsArr[month + 1])
+    } else {
+      setYear(year + 1)
+      setMonth(0)
+      setMonthName(monthsArr[0])
     }
   };
   const prevMonth = () => {
     if (month !== 0) {
       setMonth(month - 1)
       setMonthName(monthsArr[month - 1])
+    } else {
+      setYear(year - 1)
+      setMonth(11)
+      setMonthName(monthsArr[11])
     }
   };
 
@@ -41,7 +49,7 @@ const MonthNameDisplay = () => {
       >
         navigate_before
       </button>
-      <h3 className="month-title">{monthName}</h3>
+      <h3 className="month-title">{`${monthName} ${year}`}</h3>
       <button
         className="next-month material-symbols-outlined"
         onClick={() => nextMonth()}

@@ -12,6 +12,7 @@ const CalendarMonth = ({ month, holidays, yearArr, customEvents }) => {
   };
 
   const filteredHolidays = getFilteredEvents(holidays, month.monthIdx + 1);
+  const filteredCustomEvents = getFilteredEvents(customEvents, month.monthIdx + 1)
 
   return (
     <div className="month-calendar-container">
@@ -40,7 +41,7 @@ const CalendarMonth = ({ month, holidays, yearArr, customEvents }) => {
                   key={week}
                   week={week}
                   holidays={filteredHolidays}
-                  customEvents={customEvents}
+                  customEvents={filteredCustomEvents}
                   month={month}
                   yearArr={yearArr}
                 />

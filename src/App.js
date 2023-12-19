@@ -21,7 +21,8 @@ function App() {
   const [customEventIdCount, setCustomEventIdCount] = useState(0);
   const [holidays, setHolidays] = useState([]);
   const [month, setMonth] = useState(new Date().getMonth());
-  const yearArr = getCalendar(2023);
+  const [year, setYear] = useState(new Date().getFullYear());
+  const yearArr = getCalendar(year);
 
   useEffect(() => {
     if (localStorage.getItem("customEventIdCount") !== null) {
@@ -53,7 +54,7 @@ function App() {
   };
 
   return (
-    <NavigationContext.Provider value={{month, setMonth, yearArr}}>
+    <NavigationContext.Provider value={{ month, setMonth, year, setYear, yearArr }}>
       <CustomEventsDispatchContext.Provider value={dispatchCustomEvents}>
         <EventIdContext.Provider value={getCustomEventId}>
           <BrowserRouter>
