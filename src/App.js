@@ -89,5 +89,3 @@ function App() {
 }
 
 export default App;
-
-// Proving a point
