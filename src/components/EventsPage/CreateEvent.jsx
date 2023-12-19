@@ -1,59 +1,63 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { EventIdContext, CustomEventsDispatchContext } from "../../App";
 
-const CreateEvent = (myCustomEventsArr) => {
+const CreateEvent = () => {
+  const getCustomEventId = useContext(EventIdContext);
+  const dispatchCustomEvents = useContext(CustomEventsDispatchContext);
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [desc, setDesc] = useState("");
-
-  const eventObject = {};
-
+  
   return (
     <form>
       <input
         type="text"
         name="event-title"
-        className = "create-event-title"
+        className="create-event-title"
         onChange={(e) => {
-          eventObject.name = e.target.value;
+          setName(e.target.value);
         }}
-      /><br/>
+      />
+      <br />
       <input
         type="date"
         name="event-date"
-        className = "create-event-date"
+        className="create-event-date"
         onChange={(e) => {
-          eventObject.date = e.target.value;
+          setDate(e.target.value);
         }}
       />
       <input
         type="time"
         name="event-time"
-        className = "create-event-time"
+        className="create-event-time"
         onChange={(e) => {
-          eventObject.time = e.target.value;
+          setTime(e.target.value);
         }}
-      /><br/>
+      />
+      <br />
       <textarea
         type="text"
         name="event-description"
-        className = "create-event-desc"
+        className="create-event-desc"
         onChange={(e) => {
-          eventObject.desc = e.target.value;
+          setDesc(e.target.value);
         }}
       />
       <button
         type="submit"
         onClick={(e) => {
           e.preventDefault();
-          const postEvent = {
+          const newEvent = {
             name,
             date,
             time,
             desc,
+            id: getCustomEventId(),
           };
-          myCustomEventsArr.push(postEvent);
-          console.log(myCustomEventsArr);
+          dispatchCustomEvents({ type: "CREATE_EVENT", payload: newEvent });
+          console.log('event should have created')
         }}
       >
         Create Event
@@ -63,13 +67,3 @@ const CreateEvent = (myCustomEventsArr) => {
 };
 
 export default CreateEvent;
-
-
-// const eventObject = {
-//     date: "2023-12-24",
-//     time: null,
-//     name: "Christmas Eve",
-//     desc: "This is the day before Christmas Day",
-//   };
-
-//   dispatchCustomEvents({type: "CREATE_EVENT", payload: eventObject});

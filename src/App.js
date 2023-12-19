@@ -4,43 +4,31 @@ import CalendarMonth from "./components/CalendarMonthView/CalendarMonth.jsx";
 import getCalendar from "./util/getCalendar.js";
 import getHolidaysByYear from "./util/getHolidaysFromAPI.js";
 import EventPage from "./components/EventsPage/EventPage.jsx";
-import DayCalendar from "./components/CalendarDayView/DayCalendar.jsx"
+import DayCalendar from "./components/CalendarDayView/DayCalendar.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState, useEffect, useReducer } from "react";
+import { useState, useEffect, useReducer, createContext } from "react";
+import customEventReducer from "./util/customEventReducer.js";
 
-function customEventReducer(state, action) {
-  switch (action.type) {
-    case "LOAD_EVENTS": {
-      return JSON.parse(localStorage.getItem("customEvents"));
-    }
-    case "CREATE_EVENT": {
-      const newEvent = action.payload;
-      const updatedState = [...state, newEvent];
-      localStorage.setItem("customEvents", JSON.stringify(updatedState));
-      return updatedState;
-    }
-    case "EDIT_EVENT": {
-      return;
-    }
-    case "DELETE_EVENT": {
-      return;
-    }
-    default: {
-      return state;
-    }
-  }
-}
+export const EventIdContext = createContext();
+export const CustomEventsDispatchContext = createContext();
 
 function App() {
   const [customEvents, dispatchCustomEvents] = useReducer(
     customEventReducer,
     []
   );
+  const [customEventIdCount, setCustomEventIdCount] = useState(0);
   const [holidays, setHolidays] = useState([]);
   const yearArr = getCalendar(2023);
   const month = new Date().getMonth();
 
   useEffect(() => {
+    if (localStorage.getItem("customEventIdCount") !== null) {
+      // gets the running id count for custom events
+      setCustomEventIdCount(
+        JSON.parse(localStorage.getItem("customEventIdCount"))
+      );
+    }
     // Checks if we have Holidays in local storage
     if (localStorage.getItem("2023Holidays") !== null) {
       // If we do we get them from local storage
@@ -55,40 +43,41 @@ function App() {
     if (localStorage.getItem("customEvents") !== null) {
       dispatchCustomEvents({ type: "LOAD_EVENTS" });
     }
-
-    /* const myCustomEventsArr = [];
-    const eventObject = {
-      date: "2023-12-24",
-      time: null,
-      name: "Christmas Eve",
-      desc: "This is the day before Christmas Day",
-    };
-
-    dispatchCustomEvents({ type: "CREATE_EVENT", payload: eventObject }); */
   }, []);
-  
+
+  const getCustomEventId = () => {
+    setCustomEventIdCount(customEventIdCount + 1);
+    localStorage.setItem("customEventIdCount", customEventIdCount + 1);
+    return customEventIdCount;
+  };
 
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Navigation Navigation={Navigation}></Navigation>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <CalendarMonth
-                month={yearArr[month]}
-                holidays={holidays}
-                customEvents={customEvents}
+    <CustomEventsDispatchContext.Provider value={dispatchCustomEvents}>
+      <EventIdContext.Provider value={getCustomEventId}>
+        <BrowserRouter>
+          <div className="App">
+            <Navigation Navigation={Navigation}></Navigation>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <CalendarMonth
+                    month={yearArr[month]}
+                    holidays={holidays}
+                    customEvents={customEvents}
+                  />
+                }
               />
-            }
-          />
-          <Route path="/events" element={<EventPage />} />
-          <Route path="/:month/:day" element={<DayCalendar holidays={holidays}/>}
-          />
-        </Routes>
-      </div>
-    </BrowserRouter>
+              <Route path="/events" element={<EventPage />} />
+              <Route
+                path="/:month/:day"
+                element={<DayCalendar holidays={holidays} />}
+              />
+            </Routes>
+          </div>
+        </BrowserRouter>
+      </EventIdContext.Provider>
+    </CustomEventsDispatchContext.Provider>
   );
 }
 
