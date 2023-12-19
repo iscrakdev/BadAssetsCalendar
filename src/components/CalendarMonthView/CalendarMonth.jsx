@@ -4,7 +4,7 @@ import CalendarMonthHeader from "./CalendarMonthHeader.jsx";
 import MonthNameDisplay from "./MonthNameDisplay.jsx";
 import { NavigationContext } from "../../App.js";
 
-const CalendarMonth = ({ month, holidays, yearArr, customEvents }) => {
+const CalendarMonth = ({ month, holidays, customEvents }) => {
   const { year } = useContext(NavigationContext);
   // monthNum will be 1-12 (1 = Jan, 12 = Dec)
   const getFilteredEvents = (arrOfEvents, monthNum, yearNum) => {
@@ -56,7 +56,6 @@ const CalendarMonth = ({ month, holidays, yearArr, customEvents }) => {
                   holidays={filteredHolidays}
                   customEvents={filteredCustomEvents}
                   month={month}
-                  yearArr={yearArr}
                 />
               );
             })}

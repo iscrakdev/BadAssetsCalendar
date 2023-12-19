@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { NavigationContext } from "../../App";
 
 const CalendarDay = ({ holidays, customEvents, month, day }) => {
+  const {year} = useContext(NavigationContext)
   const monthNameArr = [
     "January",
     "February",
@@ -30,7 +32,7 @@ const CalendarDay = ({ holidays, customEvents, month, day }) => {
 
   return (
     <td className="calendar-day-container" value="">
-      <Link to={`/${monthName}/${day}`} holidaysArr={holidaysArr}>
+      <Link to={`/${year}/${monthName}/${day}`} holidaysArr={holidaysArr}>
         {day === null ? (
           <p></p>
         ) : (
