@@ -5,9 +5,36 @@ import getCalendar from "./util/getCalendar.js";
 import getHolidaysByYear from "./util/getHolidaysFromAPI.js";
 import EventPage from "./components/EventsPage/EventPage.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useReducer } from "react";
+
+function customEventReducer(state, action) {
+  switch (action.type) {
+    case "LOAD_EVENTS": {
+      return JSON.parse(localStorage.getItem("customEvents"));
+    }
+    case "CREATE_EVENT": {
+      const newEvent = action.payload;
+      const updatedState = [...state, newEvent];
+      localStorage.setItem("customEvents", JSON.stringify(updatedState));
+      return updatedState;
+    }
+    case "EDIT_EVENT": {
+      return;
+    }
+    case "DELETE_EVENT": {
+      return;
+    }
+    default: {
+      return state;
+    }
+  }
+}
 
 function App() {
+  const [customEvents, dispatchCustomEvents] = useReducer(
+    customEventReducer,
+    []
+  );
   const [holidays, setHolidays] = useState([]);
   const yearArr = getCalendar(2023);
   const month = new Date().getMonth();
@@ -24,6 +51,19 @@ function App() {
         localStorage.setItem("2023Holidays", JSON.stringify(data));
       });
     }
+
+    if (localStorage.getItem("customEvents") !== null) {
+      dispatchCustomEvents({ type: "LOAD_EVENTS" });
+    }
+
+    const eventObject = {
+      date: "2023-12-24",
+      time: null,
+      name: "Christmas Eve",
+      desc: "This is the day before Christmas Day",
+    };
+
+    dispatchCustomEvents({ type: "CREATE_EVENT", payload: eventObject });
   }, []);
 
   return (
@@ -33,7 +73,13 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<CalendarMonth month={yearArr[month]} holidays={holidays} />}
+            element={
+              <CalendarMonth
+                month={yearArr[month]}
+                holidays={holidays}
+                customEvents={customEvents}
+              />
+            }
           />
           <Route path="/events" element={<EventPage />} />
         </Routes>
@@ -43,35 +89,3 @@ function App() {
 }
 
 export default App;
-
-/* 
-Play-Ground:
-
-let date = '2023-12-1'
-let [year, month, day] = date.split('-')
-(year is equal to '2023', month is equal to '12' and day is equal to '1')
-
-let day = {
-  day: "sunday",
-  date: "2023-12-1"
-}
-
-let week = [{day: 'Sunday', date: '2023-12-1'}, {day: 'Monday'}, {day: 'Tuesday'}, {day: 'Wednesday'}, {day: 'Thursday'}, {day: 'Friday'}, {day: 'Saturday'}]
-
-let month = [
-  week,
-  week,
-  week,
-  week,
-  week
-]
-
-29 30 31 tds []
-for (let i = 0; i <= 30; i++) {
-  tds.push(<td id={i} />)
-}
-
-let tableArr = [all tds]
-startOfMonth.getDay(); if index of array === td index, place at td index
-
-*/
