@@ -1,8 +1,10 @@
 import { useParams } from "react-router-dom";
+import { useContext } from "react"
+import { CustomEventsDispatchContext } from "../../App";
 
-const DayCalendar = ({ holidays, customEvents}) => {
+const DayCalendar = ({ holidays, customEvents }) => {
   const { year, month, day } = useParams();
-  
+  const dispatchCustomEvents = useContext(CustomEventsDispatchContext);
   const monthNameArr = [
     "January",
     "February",
@@ -17,9 +19,9 @@ const DayCalendar = ({ holidays, customEvents}) => {
     "November",
     "December",
   ];
-  
+
   const monthNum = monthNameArr.indexOf(month);
-  
+
   const dayArr = [
     "Sunday",
     "Monday",
@@ -59,7 +61,7 @@ const DayCalendar = ({ holidays, customEvents}) => {
   };
 
   const holidaysArr = getFilteredEvents(holidays, day);
-  const customEventsArr = getFilteredEvents(customEvents, day)
+  const customEventsArr = getFilteredEvents(customEvents, day);
   const curDate = new Date(year + "-" + month + "-" + day).getDay();
 
   return (
@@ -103,9 +105,20 @@ const DayCalendar = ({ holidays, customEvents}) => {
             })}
             {customEventsArr.map((event) => {
               return (
-                <h2>
-                  {event.name}
-                </h2>
+                <div>
+                  <h2>{event.name}</h2>
+                  <p
+                    onClick={() =>
+                      dispatchCustomEvents({
+                        type: "DELETE_EVENT",
+                        payload: event.id,
+                      })
+                    }
+                    className="material-symbols-outlined"
+                  >
+                    delete
+                  </p>
+                </div>
               );
             })}
           </div>

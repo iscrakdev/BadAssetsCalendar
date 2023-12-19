@@ -22,7 +22,7 @@ function customEventReducer(state, action) {
     case "DELETE_EVENT": {
       const eventToDelete = action.payload;
       const updatedState = state.filter(
-        (event) => event.id !== eventToDelete.id
+        (event) => event.id !== eventToDelete
       );
       localStorage.setItem("customEvents", JSON.stringify(updatedState));
       return updatedState;
