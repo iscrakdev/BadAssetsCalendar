@@ -32,7 +32,7 @@ const CalendarMonth = ({ month, holidays, yearArr, customEvents }) => {
       <div className="lefthand-customizer">
         <div>
           <h3>Filters</h3>
-          <input type="checkbox" name="events-checkbox" defaultChecked></input>
+          <input type="checkbox" name="events-checkbox" defaultChecked />
           <label for="events-checkbox">Events</label>
           <br />
           <input type="checkbox" name="holidays-checkbox" defaultChecked />
