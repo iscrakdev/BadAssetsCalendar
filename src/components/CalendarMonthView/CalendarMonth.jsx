@@ -3,11 +3,11 @@ import CalendarWeek from "./CalendarWeek.jsx";
 import CalendarMonthHeader from "./CalendarMonthHeader.jsx";
 import MonthNameDisplay from "./MonthNameDisplay.jsx";
 
-const CalendarMonth = ({ month, holidays }) => {
+const CalendarMonth = ({ month, holidays, yearArr, customEvents }) => {
   // monthNum will be 1-12 (1 = Jan, 12 = Dec)
   const getFilteredEvents = (arrOfEvents, monthNum) => {
     return arrOfEvents.filter((event) =>
-      Number(event.date.split("-")[1]) === monthNum ? true : false
+      Number(event.date.split("-")[1]) === parseInt(monthNum) ? true : false
     );
   };
 
@@ -40,6 +40,9 @@ const CalendarMonth = ({ month, holidays }) => {
                   key={week}
                   week={week}
                   holidays={filteredHolidays}
+                  customEvents={customEvents}
+                  month={month}
+                  yearArr={yearArr}
                 />
               );
             })}
