@@ -28,16 +28,18 @@ const CountdownTimer = ({ date, time }) => {
   }, 1000);
 
   return (
-    <div className="countdown-timer event-inline-obj">
+    <div className = "countdown-container">
       {days === null ? (
-        "Loading..."
+        <span class="material-symbols-outlined loader">
+        autorenew
+        </span>
       ) : (
-        <>
-          <p className="event-inline-obj">{days}d</p>
-          <p className="event-inline-obj"> {hours}h</p>
-          <p className="event-inline-obj"> {minutes}m</p>
-          <p className="event-inline-obj"> {seconds}s</p>
-        </>
+        <p className = "countdown-timer">
+          <span className="event-inline-obj countdown countdown-days">{days}</span>d
+          <span className="event-inline-obj countdown countdown-hours"> {hours}</span>h
+          <span className="event-inline-obj countdown countdown-minutes"> {minutes}</span>m
+          <span className="event-inline-obj countdown countdown-seconds"> {seconds}</span>s
+        </p>
       )}
     </div>
   );

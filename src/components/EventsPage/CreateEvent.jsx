@@ -15,6 +15,7 @@ const CreateEvent = () => {
         type="text"
         name="event-title"
         className="create-event-title"
+        placeholder="Event Name"
         onChange={(e) => {
           setName(e.target.value);
         }}
@@ -44,9 +45,10 @@ const CreateEvent = () => {
         onChange={(e) => {
           setDesc(e.target.value);
         }}
-      />
+      /><br/>
       <button
         type="submit"
+        className = "create-event-submit"
         onClick={(e) => {
           e.preventDefault();
           const newEvent = {
