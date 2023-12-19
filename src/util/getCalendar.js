@@ -18,7 +18,6 @@ const appendNullDays = (weekArr) => {
 
 function getCalendar(year) {
   let offset = new Date(year, 0, 1).getDay();
-  console.log(offset)
   // February has a conditional check for 29 days on leap year
   const months = [
     31,
@@ -38,7 +37,7 @@ function getCalendar(year) {
   return months.map((daysInMonth, idx) => {
     const month = {
       monthIdx: idx,
-    }
+    };
     const monthArr = [];
     let curDay = 1;
     while (curDay <= daysInMonth) {
@@ -63,7 +62,7 @@ function getCalendar(year) {
 
       monthArr.push(weekArr);
     }
-    month['monthArr'] = monthArr
+    month["monthArr"] = monthArr;
     return month;
   });
 }
