@@ -1,11 +1,17 @@
 .App {
   text-align: center;
 }
+body{
+  scrollbar-width: none;
+}
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 .page-title{
   font-family:serif;
+}
+::-webkit-scrollbar {
+  display: none;
 }
 
 /* navigation */
@@ -46,7 +52,7 @@
 .month-title{
   margin-left: 35%;
   margin-right: 35%;
-  color: rgb(115, 115, 202);
+  color: #6b9080;
 }
 .previous-month, .next-month{
   background-color: whitesmoke;
@@ -56,7 +62,7 @@
   border-radius: 5px;
 }
 .previous-month:hover, .next-month:hover{
-  background-color: rgb(115, 115, 202);
+  background-color: #a4c3b2;
   color: white;
 }
 .previous-month{
@@ -64,24 +70,52 @@
 }
 .calendar-table td,
 th {
-  width: 95px;
+  max-width: 50px;
+  word-wrap: normal;
+  height: 80px;
+  padding: 4px 4px 0px 4px;
+  border: 1px solid rgb(0,0,0,0);
 }
 .calendar-table th{
   font-family: serif;
   padding-top: 5px;
 }
 .calendar-table td:hover{
-background-color: rgb(219, 219, 236);
+  background-color: #eaf4f4;
+  border: 1px solid #a4c3b2;
 }
 .calendar-table td p {
-  margin: auto;
-  text-align: right;
+
 }
 .calendar-top-bar{
   width: 90%;
   margin: auto;
   background-color: white;
   padding-top: 8px;
+}
+.table-date{
+  align-items: flex-end;
+}
+.calendar-day-container{
+  position: relative;
+}
+.calendar-day{
+  text-align: right;
+  color: grey;
+  font-size: 11pt;
+  position:absolute;
+  padding-right: 3px;
+  right: 0;
+  padding-bottom: 0px;
+}
+.days-events, .day-td{
+  margin-top: 0;
+}
+.days-events{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 /* Event Page */
@@ -96,7 +130,7 @@ background-color: rgb(219, 219, 236);
   right: 0;
 }
 .new-event-button{
-  background-color: rgb(115, 115, 202);
+  background-color: #a4c3b2;
   border: none;
   border-radius: 8px;
   padding: 5px;
@@ -109,10 +143,34 @@ background-color: rgb(219, 219, 236);
   font-size: 14pt;
 }
 
+
 /* Event/Holiday card coloring */
-.holiday{
-  background-color: peachpuff;
-}
 .event{
+  font-size: 10pt;
+  text-align: left;
+  padding: 2px;
+  border-radius: 5px;
+  height: 18px;
+  overflow: hidden;
+  padding-left: 5px;
+  margin: 4px 4px 0px 4px;
+}
+.event:hover{
+  height: fit-content;
+}
+.holiday{
+  background-color: #a4c3b2;
+}
+.holiday:hover{
+  background-color: #c2e0d0;
+}
+.custom-event{
   background-color: rgb(179, 215, 229);
+}
+.today{
+  background-color: whitesmoke;
+}
+
+table td .calendar-day{
+  padding-bottom: 0px;
 }
