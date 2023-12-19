@@ -71,7 +71,7 @@ function App() {
                     />
                   }
                 />
-                <Route path="/events" element={<EventPage />} />
+                <Route path="/events" element={<EventPage holidays={holidays} customEvents={customEvents} />} />
                 <Route
                   path="/:month/:day"
                   element={<DayCalendar holidays={holidays} />}
