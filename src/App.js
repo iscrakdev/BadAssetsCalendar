@@ -74,7 +74,7 @@ function App() {
                 <Route path="/events" element={<EventPage />} />
                 <Route
                   path="/:month/:day"
-                  element={<DayCalendar holidays={holidays} />}
+                  element={<DayCalendar holidays={holidays} year={year}/>}
                 />
               </Routes>
             </div>

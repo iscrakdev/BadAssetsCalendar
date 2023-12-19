@@ -215,3 +215,12 @@ th {
 table td .calendar-day{
   padding-bottom: 0px;
 }
+
+/* Single Day View for Calendar*/
+.day-menu-item{
+  display: inline;
+}
+.day-menu-button{
+  transform: translate(0, 6px);
+  margin: 0;
+}
