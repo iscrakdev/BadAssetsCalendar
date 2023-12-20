@@ -5,9 +5,9 @@ import MonthNameDisplay from "./MonthNameDisplay.jsx";
 import { NavigationContext } from "../../App.js";
 
 const CalendarMonth = ({ month, holidays, customEvents }) => {
-  const [displayHolidays, setDisplayHolidays] = useState(true)
-  const [displayEvents, setDisplayEvents] = useState(true)
-  const { year } = useContext(NavigationContext);
+  const [displayHolidays, setDisplayHolidays] = useState(true);
+  const [displayEvents, setDisplayEvents] = useState(true);
+  const { year, setMonth, setYear } = useContext(NavigationContext);
   // monthNum will be 1-12 (1 = Jan, 12 = Dec)
   const getFilteredEvents = (arrOfEvents, monthNum, yearNum) => {
     return arrOfEvents.filter((event) =>
@@ -34,11 +34,33 @@ const CalendarMonth = ({ month, holidays, customEvents }) => {
       <div className="lefthand-customizer">
         <div>
           <h3>Filters</h3>
-          <input onClick={() => {setDisplayEvents(!displayEvents)}} type="checkbox" name="events-checkbox" defaultChecked/>
+          <input
+            onClick={() => {
+              setDisplayEvents(!displayEvents);
+            }}
+            type="checkbox"
+            name="events-checkbox"
+            defaultChecked
+          />
           <label for="events-checkbox">Events</label>
           <br />
-          <input onClick={() => {setDisplayHolidays(!displayHolidays)}} type="checkbox" name="holidays-checkbox" defaultChecked />
+          <input
+            onClick={() => {
+              setDisplayHolidays(!displayHolidays);
+            }}
+            type="checkbox"
+            name="holidays-checkbox"
+            defaultChecked
+          />
           <label for="holidays-checkbox">Holidays</label>
+        </div>
+        <div>
+          <button
+            onClick={() => {
+              window.location.replace("/");
+            }}
+            
+          >Go To Today</button>
         </div>
       </div>
       <div className="calendar-table">
