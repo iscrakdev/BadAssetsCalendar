@@ -53,11 +53,13 @@ body{
   border-radius: 8px;
   padding-top: 3px;
   padding-bottom: 3px;
+  border-collapse: none;
 }
 .calendar-table table {
   margin: auto;
   background-color: white;
   width: 90%;
+  border-collapse: collapse;
 }
 .previous-month,
 .next-month,
@@ -103,7 +105,7 @@ th {
   word-wrap: normal;
   height: 85px;
   padding: 4px 4px 0px 4px;
-  border: 1px solid rgb(0,0,0,0);
+  border: 0;
 }
 .calendar-table th{
   font-weight: normal;
@@ -112,12 +114,18 @@ th {
   padding-bottom: 5px;
 }
 .calendar-table td:hover{
-  background-color: #eaf4f4;
+  background-color: #cbd8d0;
   box-shadow: 2px 2px 2px rgb(0,0,0,0.2);
   transition: ease-in-out 0.25s;
 }
 .calendar-table td {
   overflow: scroll;
+}
+.calendar-table td:hover .holiday{
+  background-color:#a4c3b2;
+}
+.calendar-table tr:nth-child(even){
+  background-color:rgb(240, 240, 240);
 }
 .calendar-top-bar{
   width: 90%;
@@ -148,6 +156,15 @@ th {
   top: 0;
   left: 0;
   width: 100%;
+}
+/* Single calendar day styling*/
+.day-menu-item{
+  display: inline;
+  margin: 0;
+}
+.day-menu-button{
+  vertical-align: bottom;
+  
 }
 
 /* Event Page */
@@ -309,8 +326,18 @@ form:hover{
   font-family: 'Caveat', cursive;
   color: rgb(58, 73, 78);
 }
+.custom-event:hover{
+  background-color: rgb(135, 171, 185);
+  color: white;
+}
 .today{
-  background-color: whitesmoke;
+  background-color: #6b9080;
+}
+.today .calendar-day {
+  color: white;
+}
+.today:hover{
+  
 }
 
 table td .calendar-day{
