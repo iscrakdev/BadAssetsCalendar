@@ -32,18 +32,25 @@ function App() {
       );
     }
     // Checks if we have Holidays in local storage
-    if (localStorage.getItem("2023Holidays") !== null) {
+    if (localStorage.getItem(`${year}Holidays`) !== null) {
       // If we do we get them from local storage
-      setHolidays(JSON.parse(localStorage.getItem("2023Holidays")));
+      setHolidays(JSON.parse(localStorage.getItem(`${year}Holiday`)));
     } else {
       // If not we fetch them and update local storage
-      getHolidaysByYear(2023).then((data) => {
+      getHolidaysByYear(year).then((data) => {
         setHolidays(data);
-        localStorage.setItem("2023Holidays", JSON.stringify(data));
+        localStorage.setItem(`${year}Holidays`, JSON.stringify(data));
       });
     }
     if (localStorage.getItem("customEvents") !== null) {
       dispatchCustomEvents({ type: "LOAD_EVENTS" });
+    }
+    for (let i = 2020; i <= 2030; i++) {
+      if (localStorage.getItem(`${i}Holidays`) === null) {
+        getHolidaysByYear(i).then((data) => {
+          localStorage.setItem(`${i}Holidays`, JSON.stringify(data));
+        });
+      }
     }
   }, []);
 
@@ -73,7 +80,15 @@ function App() {
                     />
                   }
                 />
-                <Route path="/events" element={<EventPage holidays={holidays} customEvents={customEvents} />} />
+                <Route
+                  path="/events"
+                  element={
+                    <EventPage
+                      holidays={holidays}
+                      customEvents={customEvents}
+                    />
+                  }
+                />
                 <Route
                   path="/:year/:month/:day"
                   element={
