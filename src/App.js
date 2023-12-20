@@ -34,7 +34,7 @@ function App() {
     // Checks if we have Holidays in local storage
     if (localStorage.getItem(`${year}Holidays`) !== null) {
       // If we do we get them from local storage
-      setHolidays(JSON.parse(localStorage.getItem(`${year}Holiday`)));
+      setHolidays(JSON.parse(localStorage.getItem(`${year}Holidays`)));
     } else {
       // If not we fetch them and update local storage
       getHolidaysByYear(year).then((data) => {
@@ -53,6 +53,11 @@ function App() {
       }
     }
   }, []);
+
+  useEffect(() => {
+    setHolidays(JSON.parse(localStorage.getItem(`${year}Holidays`)));
+console.log("Year changed");
+  },[year])
 
   const getCustomEventId = () => {
     setCustomEventIdCount(customEventIdCount + 1);
