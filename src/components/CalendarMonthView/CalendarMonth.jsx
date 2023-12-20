@@ -33,16 +33,17 @@ const CalendarMonth = ({ month, holidays, customEvents }) => {
     <div className="month-calendar-container">
       <div className="lefthand-customizer">
         <div>
-          <h3>Filters</h3>
+          <h3 className = "filter-title">Filters</h3>
           <input
             onClick={() => {
               setDisplayEvents(!displayEvents);
             }}
             type="checkbox"
             name="events-checkbox"
+            className = "checkbox"
             defaultChecked
           />
-          <label for="events-checkbox">Events</label>
+          <label for="events-checkbox" className = "checkbox-label">Events</label>
           <br />
           <input
             onClick={() => {
@@ -50,17 +51,20 @@ const CalendarMonth = ({ month, holidays, customEvents }) => {
             }}
             type="checkbox"
             name="holidays-checkbox"
+            className = "checkbox"
             defaultChecked
           />
-          <label for="holidays-checkbox">Holidays</label>
+          <label for="holidays-checkbox"  className = "checkbox-label">Holidays</label>
         </div>
         <div>
           <button
             onClick={() => {
               window.location.replace("/");
             }}
-            
-          >Go To Today</button>
+            className = "current-day-button"
+          >Go To Today <span class="material-symbols-outlined today-icon">
+          today
+          </span></button>
         </div>
       </div>
       <div className="calendar-table">

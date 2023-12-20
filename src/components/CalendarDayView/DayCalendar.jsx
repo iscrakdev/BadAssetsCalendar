@@ -73,7 +73,7 @@ const DayCalendar = ({ holidays, customEvents }) => {
       <div className="day-calendar-table">
         <div className="day-selector-menu">
           <p
-            className="material-symbols-outlined day-menu-item day-menu-button"
+            className="material-symbols-outlined day-menu-item day-menu-button prev"
             onClick={() => {
               prevDay();
               console.log(month, day);
@@ -87,25 +87,28 @@ const DayCalendar = ({ holidays, customEvents }) => {
             <span>{day}</span>
           </p>
           <p
-            className="material-symbols-outlined day-menu-item day-menu-button"
+            className="material-symbols-outlined day-menu-item day-menu-button next"
             onClick={() => {
               nextDay();
             }}
           >
             navigate_next
           </p>
-          <button
-            onClick={() =>
-              window.location.replace(
-                `/${new Date().getFullYear()}/${
-                  monthNameArr[new Date().getMonth()]
-                }/${new Date().getDate()}`
-              )
-            }
-          >
-            Go To Today
-          </button>
         </div>
+        <br />
+        <button
+          onClick={() =>
+            window.location.replace(
+              `/${new Date().getFullYear()}/${
+                monthNameArr[new Date().getMonth()]
+              }/${new Date().getDate()}`
+            )
+          }
+          className="current-day-button day-button-day-styling"
+        >
+          Go To Today{" "}
+          <span class="material-symbols-outlined today-icon">today</span>
+        </button>
         <div className="day-schedule-container">
           <div className="holiday-day-card">
             {holidaysArr.map((holiday) => {
@@ -116,11 +119,14 @@ const DayCalendar = ({ holidays, customEvents }) => {
                     : holiday.name}
                 </h2>
               );
-            })}
+            })}</div>
+            <div>
             {customEventsArr.map((event) => {
               return (
-                <div>
-                  <h2>{event.name}</h2>
+                <div className = "event-card">
+                  <h2 className="event-card-title">{event.name}</h2>
+                  <p className = "event-time">{event.time}</p>
+                  <p className = "event-desc">{event.desc}</p>
                   <p
                     onClick={() =>
                       dispatchCustomEvents({
@@ -128,9 +134,8 @@ const DayCalendar = ({ holidays, customEvents }) => {
                         payload: event.id,
                       })
                     }
-                    className="material-symbols-outlined"
-                  >
-                    delete
+                    className="material-symbols-outlined delete-button"
+                  >delete
                   </p>
                 </div>
               );
