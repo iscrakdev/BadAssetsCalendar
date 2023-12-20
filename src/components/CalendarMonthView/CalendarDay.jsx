@@ -43,7 +43,7 @@ const CalendarDay = ({
   console.log(targetDay);
 
   return (
-    <td className="calendar-day-container" value="">
+    <td className={`calendar-day-container ${isToday ? "today" : ""}`} value="">
       <Link to={`/${year}/${monthName}/${day}`} holidaysArr={holidaysArr}>
         {day === null ? (
           <p></p>
@@ -71,7 +71,7 @@ const CalendarDay = ({
                   })
                 : null}
             </div>
-            <p className={`calendar-day ${isToday ? "is-today" : ""}`}>{day}</p>
+            <p className={`calendar-day`}>{day}</p>
           </div>
         )}
       </Link>
