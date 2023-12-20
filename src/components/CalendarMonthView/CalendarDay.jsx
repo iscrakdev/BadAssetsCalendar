@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { NavigationContext } from "../../App";
 
-const CalendarDay = ({ holidays, customEvents, month, day }) => {
+const CalendarDay = ({
+  holidays,
+  customEvents,
+  month,
+  day,
+  displayEvents,
+  displayHolidays,
+}) => {
+  const { year } = useContext(NavigationContext);
   const monthNameArr = [
     "January",
     "February",
@@ -17,7 +26,7 @@ const CalendarDay = ({ holidays, customEvents, month, day }) => {
     "December",
   ];
   const monthName = monthNameArr[month.monthIdx];
-  
+
   const getFilteredEvents = (arrOfEvents, dayNum) => {
     const returnedEvents = arrOfEvents.filter((event) => {
       return Number(event.date.split("-")[2]) === dayNum ? true : false;
@@ -30,28 +39,32 @@ const CalendarDay = ({ holidays, customEvents, month, day }) => {
 
   return (
     <td className="calendar-day-container" value="">
-      <Link to={`/${monthName}/${day}`} holidaysArr={holidaysArr}>
+      <Link to={`/${year}/${monthName}/${day}`} holidaysArr={holidaysArr}>
         {day === null ? (
           <p></p>
         ) : (
           <div className="day-td">
             <div className="days-events">
-              {holidaysArr.map((holiday) => {
-                return (
-                  <p className="holiday event">
-                    {holiday.name === "Christmas Eve observed"
-                      ? "Christmas Day"
-                      : holiday.name}
-                  </p>
-                );
-              })}
-              {customEventsArr.map((customs) => {
-                return (
-                  <p className="event custom-event">
-                    <span>{customs.name}</span>
-                  </p>
-                );
-              })}
+              {displayHolidays
+                ? holidaysArr.map((holiday) => {
+                    return (
+                      <p className="holiday event">
+                        {holiday.name === "Christmas Eve observed"
+                          ? "Christmas Day"
+                          : holiday.name}
+                      </p>
+                    );
+                  })
+                : null}
+              {displayEvents
+                ? customEventsArr.map((customs) => {
+                    return (
+                      <p className="event custom-event">
+                        <span>{customs.name}</span>
+                      </p>
+                    );
+                  })
+                : null}
             </div>
             <p className="calendar-day">{day}</p>
           </div>

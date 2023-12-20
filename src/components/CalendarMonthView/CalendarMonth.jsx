@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import CalendarWeek from "./CalendarWeek.jsx";
 import CalendarMonthHeader from "./CalendarMonthHeader.jsx";
 import MonthNameDisplay from "./MonthNameDisplay.jsx";
 import { NavigationContext } from "../../App.js";
 
-const CalendarMonth = ({ month, holidays, yearArr, customEvents }) => {
+const CalendarMonth = ({ month, holidays, customEvents }) => {
+  const [displayHolidays, setDisplayHolidays] = useState(true)
+  const [displayEvents, setDisplayEvents] = useState(true)
   const { year } = useContext(NavigationContext);
   // monthNum will be 1-12 (1 = Jan, 12 = Dec)
   const getFilteredEvents = (arrOfEvents, monthNum, yearNum) => {
@@ -32,10 +34,10 @@ const CalendarMonth = ({ month, holidays, yearArr, customEvents }) => {
       <div className="lefthand-customizer">
         <div>
           <h3>Filters</h3>
-          <input type="checkbox" name="events-checkbox" defaultChecked />
+          <input onClick={() => {setDisplayEvents(!displayEvents)}} type="checkbox" name="events-checkbox" defaultChecked/>
           <label for="events-checkbox">Events</label>
           <br />
-          <input type="checkbox" name="holidays-checkbox" defaultChecked />
+          <input onClick={() => {setDisplayHolidays(!displayHolidays)}} type="checkbox" name="holidays-checkbox" defaultChecked />
           <label for="holidays-checkbox">Holidays</label>
         </div>
       </div>
@@ -56,7 +58,8 @@ const CalendarMonth = ({ month, holidays, yearArr, customEvents }) => {
                   holidays={filteredHolidays}
                   customEvents={filteredCustomEvents}
                   month={month}
-                  yearArr={yearArr}
+                  displayEvents={displayEvents}
+                  displayHolidays={displayHolidays}
                 />
               );
             })}

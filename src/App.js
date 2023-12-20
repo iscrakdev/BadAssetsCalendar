@@ -54,7 +54,9 @@ function App() {
   };
 
   return (
-    <NavigationContext.Provider value={{ month, setMonth, year, setYear, yearArr }}>
+    <NavigationContext.Provider
+      value={{ month, setMonth, year, setYear, yearArr }}
+    >
       <CustomEventsDispatchContext.Provider value={dispatchCustomEvents}>
         <EventIdContext.Provider value={getCustomEventId}>
           <BrowserRouter>
@@ -73,8 +75,13 @@ function App() {
                 />
                 <Route path="/events" element={<EventPage holidays={holidays} customEvents={customEvents} />} />
                 <Route
-                  path="/:month/:day"
-                  element={<DayCalendar holidays={holidays} />}
+                  path="/:year/:month/:day"
+                  element={
+                    <DayCalendar
+                      holidays={holidays}
+                      customEvents={customEvents}
+                    />
+                  }
                 />
               </Routes>
             </div>
