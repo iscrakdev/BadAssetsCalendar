@@ -8,7 +8,7 @@ body{
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 .page-title{
-  font-family:serif;
+  font-family: 'Cinzel Decorative', serif;
 }
 ::-webkit-scrollbar {
   display: none;
@@ -18,6 +18,12 @@ body{
 .navigation-links {
   display: inline;
   margin-right: 40px;
+  color:#6b9080;
+  text-decoration: none;
+}
+.navigation-links:hover{
+  font-weight: bold;
+  font-style: italic;
 }
 .navigation-container {
   margin-bottom: 25px;
@@ -58,17 +64,30 @@ body{
 .month-title {
   display: inline;
 }
+.month-selector{
+  width: 50%;
+  margin-left: 25%;
+  display: relative;
+}
 .month-title{
-  margin-left: 35%;
-  margin-right: 35%;
   color: #6b9080;
+  font-weight: normal;
 }
 .previous-month, .next-month{
+  position: absolute;
   background-color: whitesmoke;
   border: none;
   padding: 5px;
   font-size: 12pt;
   border-radius: 5px;
+}
+.previous-month{
+  left: 0;
+  margin-left: 35%;
+}
+.next-month{
+  right: 0;
+  margin-right: 15%;
 }
 .previous-month:hover, .next-month:hover{
   background-color: #a4c3b2;
@@ -79,6 +98,7 @@ body{
 }
 .calendar-table td,
 th {
+  width: 50px;
   max-width: 50px;
   word-wrap: normal;
   height: 85px;
@@ -86,17 +106,18 @@ th {
   border: 1px solid rgb(0,0,0,0);
 }
 .calendar-table th{
-  font-family: serif;
+  font-weight: normal;
   padding-top: 10px;
   height: fit-content;
   padding-bottom: 5px;
 }
 .calendar-table td:hover{
   background-color: #eaf4f4;
-  border: 1px solid #a4c3b2;
+  box-shadow: 2px 2px 2px rgb(0,0,0,0.2);
+  transition: ease-in-out 0.25s;
 }
-.calendar-table td p {
-
+.calendar-table td {
+  overflow: scroll;
 }
 .calendar-top-bar{
   width: 90%;
@@ -132,7 +153,17 @@ th {
 /* Event Page */
 .event-row-1{
   position: relative;
-  margin-top: 10px
+  margin-top: 5px;
+}
+.event-row-1 .countdown-container{
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translate(-15px, -15px);
+}
+.event-row-1 h4{
+  padding: 0;
+  margin-left: 15px;
 }
 .event-item{
   background-color: whitesmoke;
@@ -142,6 +173,10 @@ th {
   padding-top: 5px;
   padding-bottom: 5px;
   text-align: left;
+  border-radius: 10px;
+}
+.event-item:hover{
+  box-shadow: 2px 2px 3px rgb(0,0,0,0.2)
 }
 .row1-item{
   padding: 5%;
@@ -173,16 +208,69 @@ th {
   margin-right: 15px;
   transform: translate(0, -15px);
 }
-.event-row-2{
+.event-row-2 p{
   margin-top: 5px;
-  margin-left: 10px;
-  margin-right: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
+  margin-left: 15px;
+  color: grey;
+  font-size: 11pt;
+  font-style: italic;
 }
 .event-item .event-description{
   font-size: 10pt;
   text-align: left;
+}
+.countdown-timer{
+  color: rgb(158, 158, 158);
+}
+.countdown{
+  font-weight: bold;
+  color:#6b9080;
+}
+form{
+  width: 25%;
+  margin-left: 38%;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  margin-top: 45px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+form:hover{
+  box-shadow: 2px 2px 3px rgb(0,0,0,0.25)
+}
+.create-event-title, .create-event-date, .create-event-time, .create-event-desc{
+  border: none;
+  padding: 5px;
+  background-color: white;
+  margin-bottom: 5px;
+}
+.create-event-title{
+  width: 220.656px;
+}
+.create-event-date{
+  margin-right: 5px;
+}
+.create-event-date::-webkit-datetime-edit-month-field, .create-event-date::-webkit-datetime-edit-day-field, .create-event-date::-webkit-datetime-edit-year-field, .create-event-date::-webkit-datetime-edit-text, .create-event-date::-webkit-calendar-picker-indicator{
+  color: grey;
+  font-size: 11pt;
+}
+.create-event-date::-webkit-datetime-edit-text, .create-event-date::-webkit-calendar-picker-indicator{
+  color: rgb(0,0,0,0);
+}
+.create-event-desc{
+  width: 220.656px;
+  resize: none;
+}
+.create-event-submit{
+  background-color: rgb(51, 55, 59);
+  padding: 5px 10px 5px 10px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+}
+.create-event-submit:hover{
+  background-color:#6b9080;
+  transition: ease-in-out 0.3s;
 }
 
 /* Event/Holiday card coloring */
@@ -198,15 +286,21 @@ th {
 }
 .event:hover{
   height: fit-content;
+  transition: ease-in-out 0.5s;
 }
 .holiday{
   background-color: #a4c3b2;
+  font-family: 'Indie Flower', cursive;
+  color:#31443c
 }
 .holiday:hover{
-  background-color: #c2e0d0;
+  background-color: #31443c;
+  color:#eaf4f4;
 }
 .custom-event{
   background-color: rgb(179, 215, 229);
+  font-family: 'Caveat', cursive;
+  color: rgb(58, 73, 78);
 }
 .today{
   background-color: whitesmoke;
@@ -215,12 +309,20 @@ th {
 table td .calendar-day{
   padding-bottom: 0px;
 }
-
-/* Single Day View for Calendar*/
-.day-menu-item{
-  display: inline;
+.loader{
+  animation-name: loading;
+  animation-duration: 3000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  position: relative;
+  top: 15px;
+  color:#6b9080;
 }
-.day-menu-button{
-  transform: translate(0, 6px);
-  margin: 0;
+@keyframes loading {
+  from {
+      transform:rotate(0deg);
+  }
+  to {
+      transform:rotate(360deg);
+  }
 }
