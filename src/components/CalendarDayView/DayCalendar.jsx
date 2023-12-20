@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useContext } from "react"
+import { useContext } from "react";
 import { CustomEventsDispatchContext } from "../../App";
 
 const DayCalendar = ({ holidays, customEvents }) => {
@@ -94,6 +94,17 @@ const DayCalendar = ({ holidays, customEvents }) => {
           >
             navigate_next
           </p>
+          <button
+            onClick={() =>
+              window.location.replace(
+                `/${new Date().getFullYear()}/${
+                  monthNameArr[new Date().getMonth()]
+                }/${new Date().getDate()}`
+              )
+            }
+          >
+            Go To Today
+          </button>
         </div>
         <div className="day-schedule-container">
           <div className="holiday-day-card">
