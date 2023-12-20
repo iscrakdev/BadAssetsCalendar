@@ -110,14 +110,16 @@ const DayCalendar = ({ holidays, customEvents }) => {
           <span class="material-symbols-outlined today-icon">today</span>
         </button>
         <div className="day-schedule-container">
-          <div className="holiday-day-card">
+          <div>
             {holidaysArr.map((holiday) => {
               return (
+                <div className="holiday-day-card">
                 <h2>
                   {holiday.name === "Christmas Eve observed"
                     ? "Christmas Day"
                     : holiday.name}
                 </h2>
+              </div>
               );
             })}</div>
             <div>

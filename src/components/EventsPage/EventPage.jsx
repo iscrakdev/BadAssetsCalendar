@@ -26,9 +26,6 @@ const EventPage = ({ holidays, customEvents }) => {
       <div className = "events-list">
                 <EventList events={topFive}/>
             </div>
-      <div className="new-event-container">
-        <CreateEvent />
-      </div>
     </div>
   );
 };

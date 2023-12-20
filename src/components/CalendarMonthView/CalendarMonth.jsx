@@ -62,7 +62,7 @@ const CalendarMonth = ({ month, holidays, customEvents }) => {
               window.location.replace("/");
             }}
             className = "current-day-button"
-          >Go To Today <span class="material-symbols-outlined today-icon">
+          >Go To This Month <span class="material-symbols-outlined today-icon">
           today
           </span></button>
         </div>
