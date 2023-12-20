@@ -36,6 +36,11 @@ const CalendarDay = ({
 
   const holidaysArr = getFilteredEvents(holidays, day);
   const customEventsArr = getFilteredEvents(customEvents, day);
+  const today = `${year}-${month.monthIdx}-${day}`;
+  const targetDay = `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`;
+  const isToday = today === targetDay;
+  console.log(today);
+  console.log(targetDay);
 
   return (
     <td className="calendar-day-container" value="">
@@ -66,7 +71,7 @@ const CalendarDay = ({
                   })
                 : null}
             </div>
-            <p className="calendar-day">{day}</p>
+            <p className={`calendar-day ${isToday ? "is-today" : ""}`}>{day}</p>
           </div>
         )}
       </Link>
