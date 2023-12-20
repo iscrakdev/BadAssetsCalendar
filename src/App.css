@@ -267,8 +267,14 @@ input[type=checkbox]{
 }
 .prev, .next{
   background-color: whitesmoke;
-  border-radius: 8px;
-  font-size: 14pt;
+  border: none;
+  padding: 5px;
+  font-size: 12pt;
+  border-radius: 5px;
+}
+.prev:hover, .next:hover{
+  background-color:#a4c3b2;
+  color: white;
 }
 .day-selector-menu{
   display: relative;
