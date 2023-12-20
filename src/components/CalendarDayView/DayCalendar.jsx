@@ -33,7 +33,10 @@ const DayCalendar = ({ holidays, customEvents }) => {
   ];
 
   const getFilteredEvents = (arrOfEvents, dayNum) => {
-    let filteredByMonth = arrOfEvents.filter((event) =>
+    let filteredByYear = arrOfEvents.filter((event) =>
+      Number(event.date.split("-")[0]) === parseInt(year) ? true : false
+    );
+    let filteredByMonth = filteredByYear.filter((event) =>
       Number(event.date.split("-")[1]) === parseInt(monthNum + 1) ? true : false
     );
     let filteredResult = filteredByMonth.filter((event) =>
