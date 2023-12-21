@@ -1,5 +1,6 @@
 import CountdownTimer from "./CountdownTimer";
 import { useState } from "react";
+import getTimestamp from "../../util/getTimestamp";
 
 const EventItem = ({ event }) => {
   // by default the input fields will be populated with an events information and they will be disabled to user input
@@ -30,9 +31,7 @@ const EventItem = ({ event }) => {
               </p>
             </td>
             <td>
-              <p className="event-inline-obj row1-item event-item-time">
-                {event.time}
-              </p>
+              <p className = "event-inline-obj row1-item event-item-time">{getTimestamp(event.time)}</p>
             </td>
           </tr>
         </table>
