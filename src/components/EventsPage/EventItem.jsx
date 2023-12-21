@@ -31,7 +31,7 @@ const EventItem = ({ event }) => {
               </p>
             </td>
             <td>
-              <p className = "event-inline-obj row1-item event-item-time">{getTimestamp(event.time)}</p>
+              <p className = "event-inline-obj row1-item event-item-time">{event.time? (getTimestamp(event.time)) : null}</p>
             </td>
           </tr>
         </table>
