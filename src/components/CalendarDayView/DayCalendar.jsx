@@ -128,7 +128,7 @@ const DayCalendar = ({ holidays, customEvents }) => {
               return (
                 <div className = "event-card">
                   <h2 className="event-card-title">{event.name}</h2>
-                  <p className = "event-time">{getTimestamp(event.time)}</p>
+                  {event.time ? <p className = "event-time">{getTimestamp(event.time)}</p> : null}
                   <p className = "event-desc">{event.desc}</p>
                   <p
                     onClick={() =>
