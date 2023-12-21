@@ -1,10 +1,10 @@
+
+
 const NotesView = () => {
-    
+
     return(
-        <div>
-            <h1>
-    Coming soon...
-            </h1>
+        <div className = "coming-soon-container">
+            <h1 className = "coming-soon-title">Coming Soon...</h1>
         </div>
     )
 }

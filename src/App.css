@@ -520,3 +520,15 @@ table td .calendar-day{
       transform:rotate(360deg);
   }
 }
+
+/* Coming soon page*/
+.coming-soon-container{
+  background-image: url("https://mitchmcclellan.com/img/27/shader_gradient.png");
+  height: 205px; 
+  padding:10%;
+}
+.coming-soon-title{
+  color: white;
+  margin-top: 8%;
+  font-weight: normal;
+}
