@@ -8,6 +8,7 @@ import DayCalendar from "./components/CalendarDayView/DayCalendar.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect, useReducer, createContext } from "react";
 import customEventReducer from "./util/customEventReducer.js";
+import NotesView from "./components/NotesView/NotesView.jsx";
 
 export const EventIdContext = createContext();
 export const CustomEventsDispatchContext = createContext();
@@ -56,8 +57,8 @@ function App() {
 
   useEffect(() => {
     setHolidays(JSON.parse(localStorage.getItem(`${year}Holidays`)));
-console.log("Year changed");
-  },[year])
+    console.log("Year changed");
+  }, [year]);
 
   const getCustomEventId = () => {
     setCustomEventIdCount(customEventIdCount + 1);
@@ -103,6 +104,7 @@ console.log("Year changed");
                     />
                   }
                 />
+                <Route path="/notes" element={<NotesView />} />
               </Routes>
             </div>
           </BrowserRouter>
