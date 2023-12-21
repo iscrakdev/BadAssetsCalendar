@@ -530,8 +530,8 @@ table td .calendar-day{
 /* Coming soon page*/
 .coming-soon-container{
   background-image: url("https://mitchmcclellan.com/img/27/shader_gradient.png");
-  background-size: 1530px;
-  height: 289px; 
+  background-size: 1600px;
+  height: 280px; 
   padding:10%;
 }
 .coming-soon-title{
