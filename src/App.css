@@ -120,7 +120,7 @@ th {
   height: fit-content;
   padding-bottom: 5px;
 }
-.calendar-table td:hover{
+.calendarhover:hover{
   background-color: #cbd8d0;
   box-shadow: 2px 2px 2px rgb(0,0,0,0.2);
   transition: ease-in-out 0.25s;
@@ -128,8 +128,11 @@ th {
 .calendar-table td {
   overflow: scroll;
 }
+.calendarhover{
+
+}
 .calendar-table td:hover .holiday{
-  background-color:#a4c3b2;
+/*   background-color:#a4c3b2; */
 }
 .calendar-table tr:nth-child(even){
   background-color:rgb(240, 240, 240);
@@ -409,9 +412,7 @@ form:hover{
 .create-event-date{
   margin-right: 5px;
 }
-.create-event-desc{
 
-}
 .create-event-date::-webkit-datetime-edit-month-field, .create-event-date::-webkit-datetime-edit-day-field, .create-event-date::-webkit-datetime-edit-year-field, .create-event-date::-webkit-datetime-edit-text, .create-event-date::-webkit-calendar-picker-indicator, .create-event-time::-webkit-date{
   color: grey;
   font-size: 11pt;
