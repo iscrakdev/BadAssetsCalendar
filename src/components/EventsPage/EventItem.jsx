@@ -19,10 +19,16 @@ const EventItem = ({ event }) => {
         <table id="event-item-table">
           <tr>
             <td>
-              <h4 className="event-inline-obj row1-item">{event.name}</h4>
+              <h4 className="event-inline-obj row1-item">
+                {event.name === "Christmas Eve observed"
+                  ? "Christmas Day"
+                  : event.name}
+              </h4>
             </td>
             <td>
-              <p className = "event-inline-obj row1-item event-item-date">{event.date}</p>
+              <p className="event-inline-obj row1-item event-item-date">
+                {event.date}
+              </p>
             </td>
             <td>
               <p className = "event-inline-obj row1-item event-item-time">{getTimestamp(event.time)}</p>
