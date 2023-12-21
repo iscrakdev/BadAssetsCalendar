@@ -380,7 +380,7 @@ input[type=checkbox]{
   color:#6b9080;
 }
 form{
-  width: 25%;
+  width: 20%;
   background-color: whitesmoke;
   border-radius: 10px;
   position: fixed;
@@ -390,7 +390,7 @@ form{
   margin-right: 10px;
   margin-bottom: 10px;
   padding-bottom: 10px;
-  padding-top: 10px;
+  padding-top: 15px;
 }
 form:hover{
   box-shadow: 2px 2px 3px rgb(0,0,0,0.25)
@@ -400,6 +400,8 @@ form:hover{
   padding: 5px;
   background-color: white;
   margin-bottom: 5px;
+  border-radius: 5px;
+  font-family: sans-serif;
 }
 .create-event-title{
   width: 220.656px;
@@ -407,9 +409,13 @@ form:hover{
 .create-event-date{
   margin-right: 5px;
 }
-.create-event-date::-webkit-datetime-edit-month-field, .create-event-date::-webkit-datetime-edit-day-field, .create-event-date::-webkit-datetime-edit-year-field, .create-event-date::-webkit-datetime-edit-text, .create-event-date::-webkit-calendar-picker-indicator{
+.create-event-desc{
+
+}
+.create-event-date::-webkit-datetime-edit-month-field, .create-event-date::-webkit-datetime-edit-day-field, .create-event-date::-webkit-datetime-edit-year-field, .create-event-date::-webkit-datetime-edit-text, .create-event-date::-webkit-calendar-picker-indicator, .create-event-time::-webkit-date{
   color: grey;
   font-size: 11pt;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .create-event-date::-webkit-datetime-edit-text, .create-event-date::-webkit-calendar-picker-indicator{
   color: rgb(0,0,0,0);
@@ -524,7 +530,8 @@ table td .calendar-day{
 /* Coming soon page*/
 .coming-soon-container{
   background-image: url("https://mitchmcclellan.com/img/27/shader_gradient.png");
-  height: 205px; 
+  background-size: 1530px;
+  height: 289px; 
   padding:10%;
 }
 .coming-soon-title{
