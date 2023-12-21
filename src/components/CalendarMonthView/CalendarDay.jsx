@@ -43,8 +43,11 @@ const CalendarDay = ({
   console.log(targetDay);
 
   return (
-    <td className={`calendar-day-container ${isToday ? "today" : ""}`} value="">
-      <Link to={`/${year}/${monthName}/${day}`} holidaysArr={holidaysArr}>
+    <td className={`calendar-day-container ${isToday ? "today" : ""} ${day!==null ? "calendarhover" : ""}`} value="" onClick={()=>{
+      if (day === null){
+        return
+      }
+      window.location.replace(`/${year}/${monthName}/${day}`)}}>
         {day === null ? (
           <p></p>
         ) : (
@@ -74,7 +77,6 @@ const CalendarDay = ({
             <p className={`calendar-day`}>{day}</p>
           </div>
         )}
-      </Link>
     </td>
   );
 };
