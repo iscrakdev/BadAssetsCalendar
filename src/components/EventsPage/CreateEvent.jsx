@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { EventIdContext, CustomEventsDispatchContext } from "../../App";
 
-const CreateEvent = ({setCreateTab}) => {
+const CreateEvent = ({ setCreateTab }) => {
   const getCustomEventId = useContext(EventIdContext);
   const dispatchCustomEvents = useContext(CustomEventsDispatchContext);
   const [name, setName] = useState("");
@@ -59,8 +59,14 @@ const CreateEvent = ({setCreateTab}) => {
             desc,
             id: getCustomEventId(),
           };
-          dispatchCustomEvents({ type: "CREATE_EVENT", payload: newEvent });
-          setCreateTab(false);
+          if (name === "" || date === "") {
+            window.alert(
+              "Please make sure to provide a name and date for your event"
+            );
+          } else {
+            dispatchCustomEvents({ type: "CREATE_EVENT", payload: newEvent });
+            setCreateTab(false);
+          }
         }}
       >
         Create Event
