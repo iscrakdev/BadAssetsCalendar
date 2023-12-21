@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useContext } from "react";
 import { CustomEventsDispatchContext } from "../../App";
+import getTimestamp from "../../util/getTimestamp.js";
 
 const DayCalendar = ({ holidays, customEvents }) => {
   const { year, month, day } = useParams();
@@ -127,7 +128,7 @@ const DayCalendar = ({ holidays, customEvents }) => {
               return (
                 <div className = "event-card">
                   <h2 className="event-card-title">{event.name}</h2>
-                  <p className = "event-time">{event.time}</p>
+                  <p className = "event-time">{getTimestamp(event.time)}</p>
                   <p className = "event-desc">{event.desc}</p>
                   <p
                     onClick={() =>
