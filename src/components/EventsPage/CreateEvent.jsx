@@ -1,14 +1,14 @@
 import { useContext, useState } from "react";
 import { EventIdContext, CustomEventsDispatchContext } from "../../App";
 
-const CreateEvent = () => {
+const CreateEvent = ({ setCreateTab }) => {
   const getCustomEventId = useContext(EventIdContext);
   const dispatchCustomEvents = useContext(CustomEventsDispatchContext);
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [desc, setDesc] = useState("");
-  
+
   return (
     <form>
       <input
@@ -45,10 +45,11 @@ const CreateEvent = () => {
         onChange={(e) => {
           setDesc(e.target.value);
         }}
-      /><br/>
+      />
+      <br />
       <button
         type="submit"
-        className = "create-event-submit"
+        className="create-event-submit"
         onClick={(e) => {
           e.preventDefault();
           const newEvent = {
@@ -58,8 +59,14 @@ const CreateEvent = () => {
             desc,
             id: getCustomEventId(),
           };
-          dispatchCustomEvents({ type: "CREATE_EVENT", payload: newEvent });
-          console.log('event should have created')
+          if (name === "" || date === "") {
+            window.alert(
+              "Please make sure to provide a name and date for your event"
+            );
+          } else {
+            dispatchCustomEvents({ type: "CREATE_EVENT", payload: newEvent });
+            setCreateTab(false);
+          }
         }}
       >
         Create Event
