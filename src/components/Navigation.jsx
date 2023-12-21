@@ -29,8 +29,8 @@ const Navigation = () => {
 
         {createTab ? (
           <div className="event-creation-form">
-            <button type = "button" class="material-symbols-outlined close-button" onClick={() => setCreateTab(false)}>close</button>
-            <CreateEvent />
+            <button type = "button" class="material-symbols-outlined close-button" onClick={() => setCreateTab(false)}>close</button> 
+            <CreateEvent setCreateTab={setCreateTab}/>
           </div>
         ) : null}
 
